@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Data Filter</title>
+    <style>
+        .data{
+            padding: 30px/*From the top bottom */ 100px /*from the side */;
+            /* background-color: lightgrey; */
+            font-family: Montserrat;
+        }
+        .title{
+            font-weight: 300;
+        }
+        /* ETAY KINTU DOT DEOA HYNI KARON TABLE NIJEY EKTA HEAD ER MOTO KAJ KORCHE  */
+        table{
+            width: 100%;
+            border: 1px solid lightgray;
+            border-collapse: collapse;
+
+        }
+        th,td{
+            padding: 10px;
+            border: 1px solid #eee5e5;
+            text-align: center;
+        }
+        th{
+            color: white;
+            background-color: rgb(25 100 169);
+        }
+        /* jegulo class segulo te style age dot asbe*/
+        .search{
+            width: 99.6%;
+            height: 30px;
+            font-size: 18px;
+            text-indent: 20px;
+            margin: 10px 0px;
+            border: 1px solid lightblue;
+        }
+
+        body{
+            background: #355C7D;
+            background: -webkit-linear-gradient(to left, #6cb2c0, #9a80b0, #6b8dac); 
+            background: linear-gradient(to right, #c1768b, #a767e0, #7aa9d3); 
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="data">
+        <b><h1 class="title"><b>Superheroes</b></h1></b>
+        <!-- this.value is the current input field's value-->
+            <input type="text" class="search" placeholder="Enter Superhero Name" id="name" onkeyup="searchName(this.value)">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No.</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Planet</th>
+                    <th>Group</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+                <!-- <tr>
+                    <td>1</td>
+                    <td>Thor</td>
+                    <td>1500</td>
+                    <td>Asgard</td>
+                    <td>Avengers</td>
+                </tr> -->
+                <!-- <img src="https://wallpaperaccess.com/full/408982.jpg"> </img> -->
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <!-- <script src="./index.js"></script> (./) For this folder only -->
+    <script>
+        let superheroes=[ //needs is equal to sign for locate the array
+
+{
+    id:1,
+    name:"Superman",
+    age:42,
+    planet:"Krypton",
+    group:"Justice League",
+
+},
+{
+    id:2,
+    name:"Thor",
+    age:1500,
+    planet:"Asgard",
+    group:"Avengers",
+
+},
+{
+    id:3,
+    name:"Starlord",
+    age:36,
+    planet:"Earth",
+    group:"Guaardians of the galaxy",
+
+},
+{
+    id:4,
+    name:"Spiderman",
+    age:17,
+    planet:"Earth",
+    group:"Avengers",
+
+},
+{
+    id:5,
+    name:"Captain America",
+    age:105,
+    planet:"Earth",
+    group:"Avengers",
+
+},
+{
+    id:6,
+    name:"Black Widow",
+    age:32,
+    planet:"Earth",
+    group:"Avengers",
+
+},
+{
+    id:7,
+    name:"Hulk",
+    age:49,
+    planet:"Earth",
+    group:"Avengers",
+
+},
+{
+    id:8,
+    name:"Dr.Strange",
+    age:42,
+    planet:"Earth",
+    group:"Avengers",
+
+},
+]
+
+
+// console.log(superheroes[1].name)
+// TO PRINT MULTIPLE INFORMATION ABOUT ANY OBJECT
+// console.log((superheroes[1].age),(superheroes[1].planet))
+
+
+// EKHANE "supes" IS A VARIABLE
+function createRows(supes){
+// EVERYTIME U GENERATE ROWS FIRST THE OLD THING WILL BE CLEAR AND NEW
+// ROWS WILL BE SHOWING
+document.getElementById("data").innerHTML=""
+
+ supes.forEach(function (superhero,index) {
+    // console.log(superhero)    
+
+let tr=document.createElement("tr");   
+
+let td1=document.createElement("td");
+td1.append(superhero.id);
+
+let td2=document.createElement("td");
+td2.append(superhero.name)
+
+let td3=document.createElement("td");
+td3.append(superhero.age);
+
+let td4=document.createElement("td");
+td4.append(superhero.planet);
+
+let td5=document.createElement("td");
+td5.append(superhero.group);
+
+tr.append(td1);
+tr.append(td2);
+tr.append(td3);
+tr.append(td4);
+tr.append(td5);
+
+console.log(tr)
+document.getElementById("data").append(tr);
+
+})
+}
+
+createRows(superheroes);
+
+function searchName(sname){
+
+let filteredArray=superheroes.filter(function(superhero,index){
+    return superhero.name.toUpperCase().includes(sname.toUpperCase());
+})
+
+// console.log(filteredArray);
+createRows(filteredArray);
+
+
+}
+
+// noTD is a variable name it's cchangable
+// let tr=document.createElement("tr");           //<tr></tr> 
+// let noTD=document.createElement("td");         //<td></td>
+// noTD.append("1");                              //<td>1</td>
+// tr.append(noTD);                               //<tr><td>1</td></tr> 
+// console.log(tr);
+// document.getElementById("data").append(tr);    //<tbody><tr><td>1</td></tr></tbody>
+
+
+    </script>
+</body>
+</html>
